@@ -11,7 +11,7 @@ void Print(Node*);
 
 int main(int argc, char const *argv[])
 {
-    Node* head = 0;
+    Node* head = nullptr;
     Insert(&head, 25);
     Insert(&head, 45);
     Insert(&head, 55);

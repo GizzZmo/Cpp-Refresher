@@ -1,0 +1,4 @@
+#Ignore cpp executable files
+*.exe
+#Ignore vs code setttings json
+.vscode
