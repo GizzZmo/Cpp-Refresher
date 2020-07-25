@@ -11,6 +11,7 @@ struct Node {
 Node* GetNewNode(int);
 Node* Insert(Node*, int);
 bool Search(Node*, int);
+Node* SearchElement(Node*, int);
 
 Node* Insert(Node *root, int data) {
     if(root == nullptr) {
@@ -46,5 +47,20 @@ bool Search(Node* root, int data) {
     }
     else {
         return Search(root->right, data);
+    }
+}
+
+Node* SearchElement(Node* root, int data) {
+    if(root==nullptr) {
+        return nullptr;
+    }
+    if(root->data == data) {
+        return root;
+    }
+    if(root->data >= data ) {
+        return SearchElement(root->left, data);
+    }
+    else {
+        return SearchElement(root->right, data);
     }
 }
