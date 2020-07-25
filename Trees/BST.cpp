@@ -11,6 +11,8 @@ struct Node {
 Node* GetNewNode(int);
 Node* Insert(Node*, int);
 bool Search(Node*, int);
+int Max(Node*);
+int Min(Node*);
 
 int main(int argc, char const *argv[])
 {
@@ -22,7 +24,9 @@ int main(int argc, char const *argv[])
     root = Insert(root, -4);
     cout<< "Searching for: " << searchEle << endl;
     string check = Search(root, searchEle) ? "yes" : "no";
-    cout<< searchEle << " present : " << check;
+    cout<< searchEle << " present : " << check << endl;
+    cout << "Max element in tree " << Max(root) <<endl;
+    cout << "Min element in tree " << Min(root) <<endl;
     return 0;
 }
 
@@ -61,4 +65,18 @@ bool Search(Node* root, int data) {
     else {
         return Search(root->right, data);
     }
+}
+
+int Max(Node *root) {
+    if(root->right==nullptr) {
+        return root->data;
+    }
+    return Max(root->right);
+}
+
+int Min(Node *root) {
+    if(root->left==nullptr) {
+        return root->data;
+    }
+    return Min(root->left);
 }
