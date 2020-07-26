@@ -16,7 +16,7 @@ int LastOccurence(int *Arr, int start, int end, int ele, int lastOccurence) {
     if(start>end) {
         return lastOccurence;
     }
-    int mid = end - (end-start)/2;
+    int mid = start + (end-start)/2;
         if(Arr[mid] == ele) {
             lastOccurence = mid;
             return LastOccurence(Arr, mid+1, end, ele, lastOccurence);

@@ -17,7 +17,7 @@ int FirstOccurence(int *Arr, int size, int ele) {
     int end = size-1;
     int firstOccurence=-1;
     while(start<=end) {
-        int mid = end - (end-start)/2;
+        int mid = start + (end-start)/2;
         if(Arr[mid] == ele) {
             firstOccurence = mid;
             end = mid-1;

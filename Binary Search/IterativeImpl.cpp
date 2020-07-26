@@ -15,7 +15,7 @@ int BinarySearch(int *Arr, int size, int ele) {
     int start = 0;
     int end = size-1;
     while(start<=end) {
-        int mid = end - (end-start)/2;
+        int mid = start + (end-start)/2;
         if(Arr[mid] == ele) {
             return 1;
         }

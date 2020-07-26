@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 int BinarySearch(int *Arr, int ele, int start, int end) {
     if(start>end)
         return 0;
-    int mid = end - (end - start)/2;
+    int mid = start + (end-start)/2;
     if(Arr[mid]==ele) {
         return 1;
     }
