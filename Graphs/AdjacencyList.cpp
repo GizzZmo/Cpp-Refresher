@@ -13,7 +13,8 @@ public:
     AdjacencyList(int v);
     void AddNode(int u, int v, bool bidir);
     void PrintEdges();
-    void BFS(int src);
+    void BFS(int,int);
+    void DFS(int, bool*visited);
 };
 
 AdjacencyList::AdjacencyList(int v)
@@ -39,7 +40,7 @@ void AdjacencyList::PrintEdges() {
     }
 }
 
-void AdjacencyList::BFS(int src) {
+void AdjacencyList::BFS(int src, int dest) {
     bool *visited = new bool[V+1]{false};
     int *dist  = new int[V+1]{0};
     int *parent = new int[V+1]{-1};
@@ -68,24 +69,39 @@ void AdjacencyList::BFS(int src) {
     }
 
     cout << "Shortest path for node 5" <<endl;
-    int temp = 5;
+    int temp = dest;
     while(temp!=-1) {
         cout << temp << "<-" << "\t";
         temp = parent[temp];
     }
 }
 
+void AdjacencyList::DFS(int src, bool *visited) {
+    if(visited[src])
+        return;
+    cout<< src << "\t";
+    visited[src] = true;
+    for(auto neighbor: adjList[src]) {
+        DFS(neighbor,visited);
+    }
+}
+
 int main() {
     AdjacencyList adjacencyList(6);
     adjacencyList.AddNode(0,1);
-    adjacencyList.AddNode(1,2);
-    adjacencyList.AddNode(0,4);
+    adjacencyList.AddNode(0,2);
+    adjacencyList.AddNode(1,3);
     adjacencyList.AddNode(2,4);
+    adjacencyList.AddNode(1,4);
     adjacencyList.AddNode(3,4);
-    adjacencyList.AddNode(3,2);
     adjacencyList.AddNode(3,5);
+    adjacencyList.AddNode(4,5);
     adjacencyList.PrintEdges();
-    adjacencyList.BFS(0);
+    cout << "BFS" << endl;
+    adjacencyList.BFS(0,3);
+    cout << endl <<"DFS" << endl;
+    bool visitedArray[6] {false};
+    adjacencyList.DFS(0,visitedArray);
     return 0;
 }
 
