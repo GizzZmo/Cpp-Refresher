@@ -12,6 +12,10 @@ class GraphAdjList {
         GraphAdjList(){
         }
         
+        unordered_map<T, list<T>> getAdjList() {
+            return adjList;
+        }
+
         void AddEdge(T u, T v, bool bidir=true) {
             adjList[u].push_back(v);
             if(bidir) {
@@ -28,12 +32,3 @@ class GraphAdjList {
             }
         }
 };
-
-int main() {
-    GraphAdjList<string> adjacencyList;
-    adjacencyList.AddEdge("A", "B");
-    adjacencyList.AddEdge("A", "C");
-    adjacencyList.AddEdge("B", "C");
-    adjacencyList.Print();
-    return 0;
-}
